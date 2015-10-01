@@ -33,7 +33,6 @@ def countPlayers():
     connection = connect()
     cursor = connection.cursor()
     cursor.execute("SELECT count(*) FROM Players;")
-    connection.commit()
     result = cursor.fetchone()
     connection.close()
     return result[0] 
@@ -79,7 +78,6 @@ def playerStandings():
                 + " AND matches_won.winner = player.id"
                 + " GROUP BY player.id, player.name"
                 + " ORDER BY wins DESC;")
-    connection.commit()
     result = cursor.fetchall()
     connection.close()
     return result
@@ -124,7 +122,6 @@ def swissPairings():
                 + " ON player.id = match.winner "
                 + " GROUP BY player.id, player.name "
                 + " ORDER BY wins DESC;")
-    connection.commit()
     result = cursor.fetchall()
     connection.close()
     pairings = []

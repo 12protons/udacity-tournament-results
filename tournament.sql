@@ -6,7 +6,7 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
-DROP DATABASE tournament;
+DROP DATABASE IF EXISTS tournament;
 
 CREATE DATABASE tournament;
 
@@ -15,7 +15,7 @@ CREATE DATABASE tournament;
 -- Players Table
 -- Each row stores a player name and a unique ID
 CREATE TABLE Players (
-   id SERIAL PRIMARY KEY,
+   id SERIAL  PRIMARY KEY,
  name varchar NOT NULL
 );
 
@@ -23,7 +23,7 @@ CREATE TABLE Players (
 -- Each row stores a match id and the ID of the winning player
 -- For a bye game, a row will contain the ID of the player in the bye
 CREATE TABLE Matches (
-id SERIAL PRIMARY KEY,
+    id SERIAL  PRIMARY KEY,
 winner integer REFERENCES Players(id)
 );
 
@@ -36,7 +36,7 @@ winner integer REFERENCES Players(id)
 -- A player cannot be in the same match more than once.
 CREATE TABLE MatchPlayers (
 player integer REFERENCES Players(id),
-match integer REFERENCES Matches(id),
+ match integer REFERENCES Matches(id),
 UNIQUE (player, match)
 );
 

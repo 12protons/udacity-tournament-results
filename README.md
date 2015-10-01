@@ -2,18 +2,29 @@
 
 
 ###Files
-- tournament.sql: Defines all tables used by the tournament database
-- tournament.py: Defines various methods that use the tournament database, using psycopg2
-- tournament_test.py: Unit tests to verify tournament.py
+- `tournament.sql`: Defines all tables used by the tournament database
+- `tournament.py`: Defines various methods that use the tournament database, using psycopg2
+- `tournament_test.py`: Unit tests to verify tournament.py
 
 ###Instructions
-Run the tournament_test.py file to display test results.
+
+####Install VirtualBox
+Download and install VirtualBox [here](https://www.virtualbox.org/wiki/Downloads).
+
+####Clone fullstack Git repository
+git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack
+
+####Copy the tournament project files into the fullstack directory
+Copy the `tournament.sql` and `tournament.py` files from this project into the fullstack/vagrant/tournament directory in the cloned repository. Note that `tournament_test.py` is unchanged.
+
+####Start and connect to the Vagrant VM
+From a terminal, go to the fullstack/vagrant directory in the cloned repository and type `vagrant up`. To connect to the newly started Vagrant VM, type `vagrant ssh`.
+
+####Execute the tournament tests
+From the terminal connected to the Vagrant VM above, type `cd /vagrant/tournament` to go the the tournament files directory. Type `python tournament_test.py` to execute the tests and verify the output.
 
 ###Design Notes
-The Matches and MatchPlayers tables allow a match to contain 1 or more players with no null values.
-A match with only 1 corresponding row in the MatchPlayers table would represent a bye, and a match
-with 5 corresponding rows in the MatchPlayers table would represent a game with 5 players.
+The `Matches` and `MatchPlayers` tables allow a match to contain 1 or more players with no null values.
+A match with only 1 corresponding row in the `MatchPlayers` table would represent a bye, and a match with 5 corresponding rows in the `MatchPlayers` table would represent a game with 5 players.
 
-The Matches table defines a winner of the match, along with the match id. If multiple players are
-allowed to win a match, a MatchWinners table should be created, which has the same table definition
-as MatchPlayers but contains only the winners of each match.
+The `Matches` table defines a winner of the match, along with the match id. If multiple players are allowed to win a match, a `MatchWinners` table should be created, which has the same table definition as `MatchPlayers` but contains only the winners of each match.
