@@ -20,8 +20,15 @@ Copy the `tournament.sql` and `tournament.py` files from this project into the f
 ####Start and connect to the Vagrant VM
 From a terminal, go to the fullstack/vagrant directory in the cloned repository and type `vagrant up`. To connect to the newly started Vagrant VM, type `vagrant ssh`.
 
+####Setup the tournament database
+From the terminal connected to the Vagrant VM above, go to the /vagrant/tournament directory and type the following commands to connect to the Postgres database and initialize the database using tournament_test.sql.
+
+    psql
+    \i tournemant_test.sql
+    \q
+
 ####Execute the tournament tests
-From the terminal connected to the Vagrant VM above, type `cd /vagrant/tournament` to go the the tournament files directory. Type `python tournament_test.py` to execute the tests and verify the output.
+From the terminal connected to the Vagrant VM above, again in the /vagrant/tournament directory, type `python tournament_test.py` to execute the tests and verify the output.
 
 ###Design Notes
 The `Matches` and `MatchPlayers` tables allow a match to contain 1 or more players with no null values.
